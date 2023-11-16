@@ -54,7 +54,7 @@ export default function SignUp() {
 
 
             // }
-            if (res.status == 500) {
+            if (res.status === 500) {
 
                 console.log('Signup in Falied');
 

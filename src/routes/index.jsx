@@ -1,15 +1,10 @@
-import { lazy, Suspense } from 'react';
+
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
-// import DashboardLayout from 'src/layouts/dashboard';
-import Navbar from '../components/NavBar';
 import UserLayout from '../layouts/UserLayout';
 import Home from '../pages/Plans';
 import Product from '../pages/Product';
 import Login from '../pages/LoginSignup';
-// export const LoginPage = lazy(() => import('src/pages/login'));
-// export const ProductsPage = lazy(() => import('src/pages/products'));
-// export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
 // ----------------------------------------------------------------------
 
@@ -18,11 +13,7 @@ export default function Router() {
         {
             path: "/",
             element: (
-
-
-
                 <UserLayout>
-
                     <Outlet />
                 </UserLayout>
             ),
