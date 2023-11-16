@@ -68,7 +68,7 @@ export default function SignUp() {
             sessionStorage.setItem("access-token", res.data.jwtToken);
 
 
-            console.log('log in Successful');
+            console.log('Sign up Successful');
 
             navigate("/");
 
