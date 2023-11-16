@@ -4,9 +4,10 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 import UserLayout from '../layouts/UserLayout';
 import Home from '../pages/Home';
 import Product from '../pages/Product';
+
+import SignUp from '../pages/Signup';
 import Login from '../pages/Login';
-// import Signup from '../pages/Signup';
-// ----------------------------------------------------------------------
+
 
 export default function Router() {
     const routes = useRoutes([
@@ -15,6 +16,7 @@ export default function Router() {
             element: (
                 <UserLayout>
                     <Outlet />
+
                 </UserLayout>
             ),
             children: [
@@ -26,7 +28,7 @@ export default function Router() {
             ]
         },
         { path: "/login", element: <Login /> },
-        // {path:"/signup",element:<Signup/>},
+        { path: "/signup", element: <SignUp /> },
         // {path:"/checkout",element:<Checkout/>},
         // {
         //   element: (
