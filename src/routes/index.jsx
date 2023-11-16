@@ -2,10 +2,10 @@
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import UserLayout from '../layouts/UserLayout';
-import Home from '../pages/Plans';
+import Home from '../pages/Home';
 import Product from '../pages/Product';
-import Login from '../pages/LoginSignup';
-
+import Login from '../pages/Login';
+// import Signup from '../pages/Signup';
 // ----------------------------------------------------------------------
 
 export default function Router() {
