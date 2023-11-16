@@ -9,31 +9,33 @@ import LoginSignup from './pages/LoginSignup'
 
 
 import theme from "./theme";
+import SignUp from "./pages/Signup";
 
 
 function App() {
   return (
     <BrowserRouter>
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar/>
-        {/* <Pace color={theme.palette.primary.light} /> */}
-        <Suspense fallback={<Fragment />}>
-          <Routes>
-         
-        <Route path='/' element={<Plans/>}/>
-        <Route path="product" element={<Product/>}>
-        <Route path='productid' element={<Product/>}/>
-        </Route>
-         <Route path='/cart' element={<Cart/>}/> 
-         <Route path='/login' element={<LoginSignup/>}/> 
-      
-          </Routes>
-        </Suspense>
-      </ThemeProvider>
-    </StyledEngineProvider>
-  </BrowserRouter>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Navbar />
+          {/* <Pace color={theme.palette.primary.light} /> */}
+          <Suspense fallback={<Fragment />}>
+            <Routes>
+
+              <Route path='/' element={<Plans />} />
+              <Route path="product" element={<Product />}>
+                <Route path='productid' element={<Product />} />
+              </Route>
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/login' element={<LoginSignup />} />
+              <Route path='/signup' element={<SignUp />} />
+
+            </Routes>
+          </Suspense>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </BrowserRouter>
   );
 }
 
