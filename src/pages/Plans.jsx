@@ -2,7 +2,7 @@ import React from 'react'
 import Resources from '../components/Resources/Resources'
 import Navbar from '../components/NavBar'
 
-const Plans = () => {
+const Home = () => {
   return (
     <div>
       <Resources />
@@ -10,4 +10,4 @@ const Plans = () => {
   )
 }
 
-export default Plans
+export default Home
