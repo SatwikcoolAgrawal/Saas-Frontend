@@ -62,7 +62,9 @@ export default function SignUp() {
 
 
             }
-            sessionStorage.setItem("access-token", res.jwtToken);
+
+
+            sessionStorage.setItem("access-token", res.data.jwtToken);
 
 
             console.log('log in Successful');
