@@ -1,49 +1,32 @@
 {
   "name": "saas-frontend",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
-  "homepage": "",
-  "description": "forntend of SaaS/admin application using React + Material-UI",
   "dependencies": {
-    "@date-io/date-fns": "^1.3.13",
-    "@emotion/react": "^11.8.1",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.4.4",
-    "@mui/lab": "^5.0.0-alpha.71",
-    "@mui/material": "^5.4.4",
-    "@mui/styles": "^5.4.4",
-    "@stripe/react-stripe-js": "^1.4.1",
-    "@stripe/stripe-js": "^1.16.0",
-    "aos": "^2.3.4",
-    "classnames": "^2.3.1",
-    "emoji-mart": "^3.0.1",
-    "js-cookie": "^3.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-cropper": "^2.1.8",
-    "react-dom": "^17.0.2",
-    "react-dropzone": "^11.3.4",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^2.1.3",
-    "recharts": "^2.1.2",
-    "workbox-background-sync": "^6.2.4",
-    "workbox-broadcast-update": "^6.2.2",
-    "workbox-cacheable-response": "^6.2.4",
-    "workbox-core": "^6.1.5",
-    "workbox-expiration": "^6.1.5",
-    "workbox-google-analytics": "^6.2.4",
-    "workbox-navigation-preload": "^6.2.2",
-    "workbox-precaching": "^6.2.4",
-    "workbox-range-requests": "^6.1.5",
-    "workbox-routing": "^6.2.4",
-    "workbox-strategies": "^6.1.5",
-    "workbox-streams": "^6.1.5"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1"
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "formik": "^2.4.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+    "workbox-background-sync": "^6.6.0",
+    "workbox-broadcast-update": "^6.6.0",
+    "workbox-cacheable-response": "^6.6.0",
+    "workbox-core": "^6.6.0",
+    "workbox-expiration": "^6.6.0",
+    "workbox-google-analytics": "^6.6.0",
+    "workbox-navigation-preload": "^6.6.0",
+    "workbox-precaching": "^6.6.0",
+    "workbox-range-requests": "^6.6.0",
+    "workbox-routing": "^6.6.0",
+    "workbox-strategies": "^6.6.0",
+    "workbox-streams": "^6.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,8 +35,21 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
-  
-
 }

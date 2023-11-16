@@ -1,35 +1,39 @@
 import React, { Fragment, Suspense, lazy } from "react";
 import { ThemeProvider, StyledEngineProvider, CssBaseline } from "@mui/material";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from './components/NavBar'
+import Plans from './pages/Plans'
+import Product from './pages/Product'
+import Cart from './pages/Cart'
+import LoginSignup from './pages/LoginSignup'
+
+
 import theme from "./theme";
-import GlobalStyles from "./GlobalStyles";
-import Pace from "./shared/components/Pace";
 
-const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
-
-const LoggedOutComponent = lazy(() => import("./logged_out/components/Main"));
 
 function App() {
   return (
     <BrowserRouter>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <GlobalStyles />
-          <Pace color={theme.palette.primary.light} />
-          <Suspense fallback={<Fragment />}>
-            <Switch>
-              <Route path="/c">
-                <LoggedInComponent />
-              </Route>
-              <Route>
-                <LoggedOutComponent />
-              </Route>
-            </Switch>
-          </Suspense>
-        </ThemeProvider>
-      </StyledEngineProvider>
-    </BrowserRouter>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Navbar/>
+        {/* <Pace color={theme.palette.primary.light} /> */}
+        <Suspense fallback={<Fragment />}>
+          <Routes>
+         
+        <Route path='/' element={<Plans/>}/>
+        <Route path="product" element={<Product/>}>
+        <Route path='productid' element={<Product/>}/>
+        </Route>
+         <Route path='/cart' element={<Cart/>}/> 
+         <Route path='/login' element={<LoginSignup/>}/> 
+      
+          </Routes>
+        </Suspense>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  </BrowserRouter>
   );
 }
 
