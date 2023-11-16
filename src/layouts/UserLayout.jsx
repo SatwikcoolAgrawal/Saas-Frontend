@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { decodeToken } from "react-jwt";
+import { useNavigate } from 'react-router';
 
 const settings = ['Dashboard', 'Logout'];
 
@@ -23,6 +24,7 @@ function UserLayout({ children }) {
 
     const [isadmin, setIsadmin] = useState(false);
     const [isLogin, setIslogin] = useState(false);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -74,7 +76,7 @@ function UserLayout({ children }) {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar >
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <AdbIcon sx={{ display: { xs: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -129,7 +131,7 @@ function UserLayout({ children }) {
                             ))} 
                         </Menu>
                     </Box> */}
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
                             noWrap
@@ -147,8 +149,8 @@ function UserLayout({ children }) {
                             }}
                         >
                             LOGO
-                        </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        </Typography> */}
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex' } }}>
 
                         </Box>
 
@@ -181,20 +183,24 @@ function UserLayout({ children }) {
                                 <MenuItem >
                                     <Typography onClick={() => {
                                         sessionStorage.removeItem('access-token');
-                                        // navigate("/");
+                                        setIslogin(false);
+                                        handleCloseUserMenu();
+
+
 
                                     }} textAlign="center">Log out</Typography>
                                 </MenuItem>
 
                             </Menu>
-                        </Box> : <Typography
+                        </Box> : <><Button
+                            onClick={() => navigate('/signup')}
                             variant="h6"
                             noWrap
                             component="a"
                             href="#app-bar-with-responsive-menu"
                             sx={{
                                 mr: 0,
-                                display: { xs: 'none', md: 'flex' },
+                                display: { xs: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
@@ -202,8 +208,25 @@ function UserLayout({ children }) {
                                 textDecoration: 'none',
                             }}
                         >
-                            Log In
-                        </Typography>}
+                            Sign Up
+                        </Button><Button
+                            onClick={() => navigate('/login')}
+                            variant="h6"
+                            noWrap
+                            component="a"
+                            href="#app-bar-with-responsive-menu"
+                            sx={{
+                                mr: 0,
+                                display: { xs: 'flex' },
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                            }}
+                        >
+                                Log In
+                            </Button></>}
                     </Toolbar>
                 </Container>
             </AppBar>

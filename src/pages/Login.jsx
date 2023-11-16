@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router';
+import api from '../api/axios';
 
 function Copyright(props) {
   return (
@@ -30,14 +32,70 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function LoginSignup() {
+export default function Login() {
+
+  const navigate = useNavigate();
+
+  const logUser = (data) => {
+
+
+
+    api.post('/login', data).then(res => {
+
+
+
+      // if(res.status==400){
+
+      // console.log('User already exists');
+
+
+
+
+      // }
+      if (res.status === 400) {
+
+        console.log('login in Falied');
+
+        navigate("/login");
+
+
+      }
+
+
+      sessionStorage.setItem("access-token", res.data.AccessToken);
+
+
+      console.log('log in Successful');
+
+      navigate("/");
+
+
+
+    }).catch(err => {
+
+
+      navigate("/login");
+
+      console.log(err);
+
+    })
+
+
+
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const password = data.get('password');
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: email,
+      password: password,
     });
+
+    logUser({ email, password });
+
   };
 
   return (
@@ -56,7 +114,7 @@ export default function LoginSignup() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Log in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -79,17 +137,14 @@ export default function LoginSignup() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Log In
             </Button>
             <Grid container>
 
