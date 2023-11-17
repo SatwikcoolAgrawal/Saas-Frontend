@@ -8,8 +8,9 @@ import HomeCard from '../components/HomeCard';
 const cards = [{servicename:"Kubernetes",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences. "},{servicename:"Docker",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences."},{servicename:"Storage",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences."},{servicename:"Cloud",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences."}];
 
 export default function Home() {
+  
   return (
-    <React.Fragment>
+    
       <main>
         {/* Hero unit */}
         <Box
@@ -43,9 +44,6 @@ export default function Home() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-    
-    </React.Fragment>
- 
+
   );
 }
