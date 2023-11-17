@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,56 +10,56 @@ import { useNavigate } from 'react-router';
 
 
 
-function TotalCard({total,cart}) {
-  const navigate=useNavigate()
+function TotalCard({ total, cart }) {
+  const navigate = useNavigate()
   return (
     <Card>
-        <CardHeader
+      <CardHeader
         title="Amount To Be Paid"
         sx={{
-            
-            color:(theme)=> theme.palette.secondary['main'],
-            backgroundColor: (theme) =>
+
+          color: (theme) => theme.palette.secondary['main'],
+          backgroundColor: (theme) =>
             theme.palette.primary['main'],
-        
-      }}
-    />
-    <CardContent>
-        
+
+        }}
+      />
+      <CardContent>
+
         <Box sx={{
-            display:"flex",
-            justifyContent:"space-between",
-            alignItems:"center"
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
         }}>
-        <Box sx={{py:4}}> 
-        <Typography component="h4" variant="h5" color="text.primary" >
-          Total Cost :
-        </Typography>
-       
+          <Box sx={{ py: 4 }}>
+            <Typography component="h4" variant="h5" color="text.primary" >
+              Total Cost :
+            </Typography>
+
+          </Box>
+
+
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'baseline',
+
+          }}>
+            <Typography component="h4" variant="h5" color="text.primary" >
+              $ {total}
+            </Typography>
+          </Box>
+
         </Box>
-      
-       
-        <Box sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'baseline',
-        
-        }}> 
-        <Typography component="h4" variant="h5" color="text.primary" >
-          $ {total}
-        </Typography>
-        </Box>
-        
-        </Box>
-     
-     
-    </CardContent>
-    <CardActions>
-      <Button fullWidth variant="outlined" sx={{py:1 ,border:3}} onClick={()=>navigate("/checkout")}>
-        Proceed To checkout
-      </Button>
-    </CardActions>
-  </Card>
+
+
+      </CardContent>
+      <CardActions>
+        <Button fullWidth variant="outlined" sx={{ py: 1, border: 3 }} onClick={() => navigate("/checkout")}>
+          Proceed To checkout
+        </Button>
+      </CardActions>
+    </Card>
   )
 }
 
