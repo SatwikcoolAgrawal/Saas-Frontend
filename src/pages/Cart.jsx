@@ -9,14 +9,14 @@ import TotalCard from '../components/TotalCard';
 const Cart = () => {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
-  const [prices,setPrices]=useState([]);
+  const [prices, setPrices] = useState([]);
   const navigate = useNavigate();
   const fetchApi = (token) => {
     api.get('/api/cart', { headers: { "Authorization": token } }).then(res => {
       const resp = res.data.data
       setItems(res.data.data);
       let s = 0;
-      let p=[];
+      let p = [];
       resp.forEach((ele) => {
         if (ele.price) s += Number(ele.price);
         p.push(ele.priceId);
@@ -46,8 +46,8 @@ const Cart = () => {
         <Grid item xs={12} sm={6} >
           {
             items.map((item, idx) => (
-              <Grid item key={idx} xs={12}>
-                <CartCard item={item} handleDelete={fetchApi}  />
+              <Grid item key={idx} xs={12} sx={{ pb: 4 }}>
+                <CartCard item={item} handleDelete={fetchApi} />
               </Grid>
             ))
           }
