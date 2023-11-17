@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import {Container,Card} from '@mui/material';
+import { Container, Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 
@@ -57,79 +57,79 @@ export default function SignUp() {
     };
 
     return (
-        <Container component="main" maxWidth="md" sx={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}>
+        <Container component="main" maxWidth="md" sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
 
-        <Card
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            borderRadius:2,
-            p:2,
-           
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor:(theme)=>theme.palette.primary['main'] }}>
-            <LockOutlinedIcon />
-          </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Signup From Here
-                    </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} >
-                                <TextField
-                                    autoComplete="given-name"
-                                    name="Name"
-                                    required
-                                    fullWidth
-                                    id="Name"
-                                    label="First Name"
-                                    autoFocus
-                                />
-                            </Grid>
+            <Card
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    borderRadius: 2,
+                    p: 2,
 
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="new-password"
-                                />
-                            </Grid>
-
+                }}
+            >
+                <Avatar sx={{ m: 1, bgcolor: (theme) => theme.palette.primary['main'] }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Signup From Here
+                </Typography>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} >
+                            <TextField
+                                autoComplete="given-name"
+                                name="Name"
+                                required
+                                fullWidth
+                                id="Name"
+                                label="First Name"
+                                autoFocus
+                            />
                         </Grid>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        >
-                            Sign Up
-                        </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <Link href="/login" variant="body2">
-                                    Already have an account? Sign in
-                                </Link>
-                            </Grid>
+
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                            />
                         </Grid>
-                    </Box>
-                </Card>
-             
-            </Container>   
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="new-password"
+                            />
+                        </Grid>
+
+                    </Grid>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Sign Up
+                    </Button>
+                    <Grid container justifyContent="flex-end">
+                        <Grid item>
+                            <Link href="/login" variant="body2">
+                                Already have an account? Sign in
+                            </Link>
+                        </Grid>
+                    </Grid>
+                </Box>
+            </Card>
+
+        </Container>
     );
 }
