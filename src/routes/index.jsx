@@ -8,6 +8,7 @@ import Cart from '../pages/Cart';
 
 import SignUp from '../pages/Signup';
 import Login from '../pages/Login';
+import PreCheckout from '../payment/PreChekout';
 
 
 export default function Router() {
@@ -30,6 +31,8 @@ export default function Router() {
         },
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <SignUp /> },
+        { path: "/checkout", element: <PreCheckout /> },
+
         // {path:"/checkout",element:<Checkout/>},
         // {
         //   element: (

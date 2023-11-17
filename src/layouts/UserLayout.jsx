@@ -54,7 +54,7 @@ function UserLayout({ children }) {
 
 
 
-    }, [])
+    },);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -78,7 +78,7 @@ function UserLayout({ children }) {
             <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar >
-                        <AdbIcon sx={{ display: { xs: 'none' ,md:"flex" }, mr: 1 }} />
+                        <AdbIcon sx={{ display: { xs: 'none', md: "flex" }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -97,7 +97,7 @@ function UserLayout({ children }) {
                             SAAS
                         </Typography>
 
-                        
+
                         <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
@@ -154,7 +154,7 @@ function UserLayout({ children }) {
                                         sessionStorage.removeItem('access-token');
                                         setIslogin(false);
                                         handleCloseUserMenu();
-
+                                        navigate('/home');
 
 
                                     }} textAlign="center">Log out</Typography>
