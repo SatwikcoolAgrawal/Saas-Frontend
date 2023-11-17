@@ -10,13 +10,13 @@ import { useLocation } from 'react-router-dom';
 const stripePromise = loadStripe('pk_test_51NSxugSCZn81mFB2wStinhtyHRJ8B8Vi20Nd8OepJisXhwSsFaX9J3s9VeDlyYGH6d3MIUhwBnGe5uZYCYyXbSuE0072fSRdEH');
 
 export default function PreCheckout() {
-
+  const location=useLocation();
   const [options, setOption] = useState({
     // passing the client secret obtained from the server
     clientSecret: null,
   });
   useCallback(useEffect(() => {
-
+    console.log(location.state)
     const fetchClient = async () => {
 
       const AccessToken = decodeToken(sessionStorage.getItem('access-token'));
@@ -31,7 +31,7 @@ export default function PreCheckout() {
       console.log(customer);
 
 
-      const res = await api.post('/api/payment/create-subscriptions', { customerId: customer.data.customerId, priceId: 'price_1ODR9gSCZn81mFB2HKKpzgQ7' });
+      const res = await api.post('/api/payment/create-subscriptions', { customerId: customer.data.customerId, priceId: location.state });
 
       console.log(res);
 

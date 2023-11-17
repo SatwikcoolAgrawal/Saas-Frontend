@@ -21,6 +21,7 @@ const Cart = () => {
         if (ele.price) s += Number(ele.price);
         p.push(ele.priceId);
       });
+      setPrices(p);
       setTotal(s);
     }).catch(error => {
       alert(error);
@@ -53,7 +54,7 @@ const Cart = () => {
           }
         </Grid>
         <Grid item xs={12} sm={6} >
-          <TotalCard total={total} />
+          <TotalCard total={total} cart={prices} />
         </Grid>
       </Grid>
     </Container>
