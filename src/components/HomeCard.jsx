@@ -11,7 +11,7 @@ function HomeCard({service}) {
     const navigate=useNavigate();
     const handleClick=(e)=>{
         
-    navigate(`/plans/${service.servicename}`);
+    navigate(`/plans/${service}`);
     }
   return (
     <Card
@@ -21,10 +21,7 @@ function HomeCard({service}) {
    
     <CardContent sx={{ flexGrow: 1 ,textAlign:'center'}}>
       <Typography gutterBottom variant="h3" component="h1">
-        {service.servicename}
-      </Typography>
-      <Typography>
-        {service.description}
+        {service}
       </Typography>
     </CardContent>
     <CardActions sx={{width:"100%"}}>

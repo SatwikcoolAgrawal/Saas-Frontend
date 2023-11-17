@@ -10,10 +10,17 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 
 export default function PricingCard({plan,islogin}) {
+
     const navigate=useNavigate();
-    const handleCardClick = async (e,id)=>{
+
+    const handleCardClick = async (e)=>{
         if(islogin){
-          api.post(`/api/additem/${id}`);
+          api.post(`/api/additem/${plan._id}`,{},{headers:{'Authorization':sessionStorage.getItem('access-token')}}).then(res=>{
+            console.log(res.data.message)
+            alert(res.data.message)
+          }).catch(error=>{
+            alert(error);
+          })
           }
         else {
           navigate('/signup')
