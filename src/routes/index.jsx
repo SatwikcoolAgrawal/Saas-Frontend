@@ -4,6 +4,7 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 import UserLayout from '../layouts/UserLayout';
 import Home from '../pages/Home';
 import Product from '../pages/Product';
+import Cart from '../pages/Cart';
 
 import SignUp from '../pages/Signup';
 import Login from '../pages/Login';
@@ -24,7 +25,7 @@ export default function Router() {
                 { path: "/home", element: <Home /> },
                 { path: '/plans/:service', element: <Product /> },
 
-                // {path:"/cart",element:<Cart/>},
+                { path: "/cart", element: <Cart /> },
             ]
         },
         { path: "/login", element: <Login /> },
