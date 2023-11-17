@@ -6,10 +6,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
-<<<<<<< Updated upstream
-=======
-import { async } from 'q';
->>>>>>> Stashed changes
 import api from '../api/axios';
 
 
