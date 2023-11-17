@@ -52,14 +52,14 @@ function TotalCard({ total, cart }) {
 
         </Box>
 
-
-      </CardContent>
-      <CardActions>
-        <Button fullWidth variant="outlined" sx={{ py: 1, border: 3 }} onClick={() => navigate("/checkout")}>
-          Proceed To checkout
-        </Button>
-      </CardActions>
-    </Card>
+     
+    </CardContent>
+    <CardActions>
+      <Button fullWidth variant="outlined" sx={{py:1 ,border:3}} onClick={()=>navigate("/checkout",{state:cart})}>
+        Proceed To checkout
+      </Button>
+    </CardActions>
+  </Card>
   )
 }
 
