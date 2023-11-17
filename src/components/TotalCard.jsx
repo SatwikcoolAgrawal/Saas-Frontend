@@ -6,10 +6,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router';
 
 
 
-function TotalCard({total}) {
+function TotalCard({total,cart}) {
+  const navigate=useNavigate()
   return (
     <Card>
         <CardHeader
@@ -53,7 +55,7 @@ function TotalCard({total}) {
      
     </CardContent>
     <CardActions>
-      <Button fullWidth variant="outlined" sx={{py:1 ,border:3}}>
+      <Button fullWidth variant="outlined" sx={{py:1 ,border:3}} onClick={()=>navigate("/checkout")}>
         Proceed To checkout
       </Button>
     </CardActions>
