@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,10 +39,13 @@ const CheckoutForm = () => {
     };
 
     return (
+        <Container component="main" maxWidth="md" sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
         <form onSubmit={handleSubmit}>
+            
             <PaymentElement />
             <button disabled={!stripe}>Submit</button>
         </form>
+        </Container>
     )
 };
 

@@ -16,6 +16,7 @@ export default function PreCheckout() {
     clientSecret: null,
   });
   useCallback(useEffect(() => {
+    console.log("Prices here")
     console.log(location.state)
     const fetchClient = async () => {
 
