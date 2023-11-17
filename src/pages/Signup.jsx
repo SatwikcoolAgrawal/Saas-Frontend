@@ -17,10 +17,7 @@ import api from '../api/axios';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignUp() {
-
-
     const navigate = useNavigate();
-
     const addUser = (data) => {
         api.post('/register', data).then(res => {
 

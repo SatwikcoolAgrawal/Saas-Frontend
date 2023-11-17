@@ -13,7 +13,7 @@ export default function PricingCard({plan,islogin}) {
     const navigate=useNavigate();
     const handleCardClick = async (e,id)=>{
         if(islogin){
-          api.post("/addtocart",{id:id});
+          api.post(`/api/additem/${id}`);
           }
         else {
           navigate('/signup')
@@ -22,8 +22,8 @@ export default function PricingCard({plan,islogin}) {
   return (
     <Card>
     <CardHeader
-      title={plan.title}
-      subheader={(plan.title==="Pro")? "Recommended":null}
+      title={plan.plan}
+      subheader={(plan.plan==="Standard")? "Recommended":null}
       titleTypographyProps={{ align: 'center' }}
       subheaderTypographyProps={{
         align: 'center',
