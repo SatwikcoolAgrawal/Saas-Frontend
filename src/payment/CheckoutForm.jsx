@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
+import api from '../api/axios';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -30,7 +31,24 @@ const CheckoutForm = () => {
             // Show error to your customer (for example, payment details incomplete)
             console.log(result.error.message);
         } else {
-            navigate('http://localhost:3001/');
+
+
+            const res = await api.post('/cartEmpty', { headers: { "Authorization": sessionStorage.getItem('access-token') } });
+
+
+            if (res) {
+
+                alert('Payment Successful');
+                navigate('/');
+            }
+
+            else {
+
+                navigate('/cart');
+
+            }
+
+
 
             // Your customer will be redirected to your `return_url`. For some payment
             // methods like iDEAL, your customer will be redirected to an intermediate
