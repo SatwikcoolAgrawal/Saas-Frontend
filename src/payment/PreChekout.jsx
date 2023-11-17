@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import api from '../api/axios';
 import { decodeToken } from 'react-jwt';
 import CheckoutForm from './CheckoutForm';
-
+import { useLocation } from 'react-router-dom';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_51NSxugSCZn81mFB2wStinhtyHRJ8B8Vi20Nd8OepJisXhwSsFaX9J3s9VeDlyYGH6d3MIUhwBnGe5uZYCYyXbSuE0072fSRdEH');
