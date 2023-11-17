@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { decodeToken } from "react-jwt";
 import { useNavigate } from 'react-router';
 import LocalMallSharpIcon from '@mui/icons-material/LocalMallSharp';
+import { Link } from '@mui/material';
 
 const settings = ['Dashboard', 'Logout'];
 
@@ -116,8 +117,10 @@ function UserLayout({ children }) {
                         >
                             SAAS
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex' } }}>
-
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex'},px:3 }}>
+                        <MenuItem   sx={{px:4}}>
+                            <Link href="/home" textAlign="center" sx={{color:(theme)=>theme.palette.secondary['main']}}>Home</Link>
+                        </MenuItem>
                         </Box>
 
                         {isLogin ? <> <Box sx={{ flexGrow: 0, px: 1 }}>

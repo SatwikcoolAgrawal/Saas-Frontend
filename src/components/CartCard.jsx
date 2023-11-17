@@ -6,10 +6,23 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
+import api from '../api/axios';
 
 
 
-function CartCard({item}) {
+function CartCard({item,handleDelete}) {
+
+  const deleteItem=async (e)=>{
+    const token=sessionStorage.getItem('access-token');
+    const res =await api.delete(`api/removeitem/${item._id}`,{headers:{"Authorization":token}});
+
+    if (res.data.success){
+      handleDelete(token)
+    }
+    else{
+      alert("unable to remove")
+    }
+  }
   return (
     <Card>
         <CardHeader
@@ -56,7 +69,7 @@ function CartCard({item}) {
      
     </CardContent>
     <CardActions>
-      <Button fullWidth variant="contained" >
+      <Button fullWidth variant="contained" onClick={deleteItem} >
         Remove Item
       </Button>
     </CardActions>

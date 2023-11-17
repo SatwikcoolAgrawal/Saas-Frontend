@@ -1,13 +1,22 @@
-import * as React from 'react';
+import React ,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import HomeCard from '../components/HomeCard';
-
-const cards = [{servicename:"Kubernetes",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences. "},{servicename:"Docker",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences."},{servicename:"Storage",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences."},{servicename:"Cloud",description:"Writing experts recommend paragraphs of no more than 150 words in three to eight sentences."}];
+import api from '../api/axios';
 
 export default function Home() {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    api.get('/api/services').then(res=>{
+      setServices(res.data);
+    }).catch(error=>{
+      console.log(error)
+    })
+  
+    
+  },[])
   
   return (
     
@@ -36,7 +45,7 @@ export default function Home() {
         <Container sx={{ py: 8 }} maxWidth="lg">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((service) => (
+            {services.map((service) => (
               <Grid item xs={12} sm={6} md={4}>
                 <HomeCard service={service}/>
               </Grid>
