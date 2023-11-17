@@ -9,6 +9,7 @@ import Cart from '../pages/Cart';
 import SignUp from '../pages/Signup';
 import Login from '../pages/Login';
 import PreCheckout from '../payment/PreChekout';
+import Success from '../payment/Success';
 
 
 export default function Router() {
@@ -32,7 +33,7 @@ export default function Router() {
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <SignUp /> },
         { path: "/checkout", element: <PreCheckout /> },
-
+        { path: "/success", element: <Success/> },
         // {path:"/checkout",element:<Checkout/>},
         // {
         //   element: (
