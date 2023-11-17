@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { decodeToken } from "react-jwt";
 import { useNavigate } from 'react-router';
+import LocalMallSharpIcon from '@mui/icons-material/LocalMallSharp';
 
 const settings = ['Dashboard', 'Logout'];
 
@@ -73,7 +74,7 @@ function UserLayout({ children }) {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar >
                         <AdbIcon sx={{ display: { xs: 'flex' }, mr: 1 }} />
@@ -127,7 +128,7 @@ function UserLayout({ children }) {
                              {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
+                                </MenuItem> 
                             ))} 
                         </Menu>
                     </Box> */}
@@ -154,10 +155,10 @@ function UserLayout({ children }) {
 
                         </Box>
 
-                        {isLogin ? <Box sx={{ flexGrow: 0 }}>
+                        {isLogin ? <> <Box sx={{ flexGrow: 0, px: 1 }}>
                             <Tooltip title="Open settings" >
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
+                                    <Avatar alt="" src="" />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -189,44 +190,52 @@ function UserLayout({ children }) {
 
 
                                     }} textAlign="center">Log out</Typography>
+
                                 </MenuItem>
 
                             </Menu>
-                        </Box> : <><Button
-                            onClick={() => navigate('/signup')}
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 0,
-                                display: { xs: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Sign Up
-                        </Button><Button
-                            onClick={() => navigate('/login')}
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 0,
-                                display: { xs: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                                Log In
-                            </Button></>}
+
+                        </Box>
+                            <IconButton color='inherit' onClick={() => navigate('/cart')} >
+                                <LocalMallSharpIcon sx={{ fontSize: 40 }} />
+                            </IconButton>
+                        </>
+                            : <><Button
+                                onClick={() => navigate('/signup')}
+                                variant="h6"
+                                noWrap
+                                component="a"
+                                href="#app-bar-with-responsive-menu"
+                                sx={{
+                                    mr: 0,
+                                    display: { xs: 'flex' },
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                SignUp
+                            </Button><Button
+                                onClick={() => navigate('/login')}
+                                variant="h6"
+                                noWrap
+                                component="a"
+                                href="#app-bar-with-responsive-menu"
+                                sx={{
+                                    mr: 0,
+                                    display: { xs: 'flex' },
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                    LogIn
+                                </Button>
+                            </>}
                     </Toolbar>
                 </Container>
             </AppBar>
