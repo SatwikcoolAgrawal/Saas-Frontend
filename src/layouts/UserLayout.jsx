@@ -77,12 +77,12 @@ function UserLayout({ children }) {
             <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar >
-                        <AdbIcon sx={{ display: { xs: 'flex' }, mr: 1 }} />
+                        <AdbIcon sx={{ display: { xs: 'none' ,md:"flex" }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
                             component="a"
-                            href="#app-bar-with-responsive-menu"
+                            href="/home"
                             sx={{
                                 mr: 0,
                                 display: { xs: 'none', md: 'flex' },
@@ -96,48 +96,13 @@ function UserLayout({ children }) {
                             SAAS
                         </Typography>
 
-                        {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem> 
-                            ))} 
-                        </Menu>
-                    </Box> */}
-                        {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        
+                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
                             noWrap
                             component="a"
-
+                            href="/home"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'none' },
@@ -149,16 +114,16 @@ function UserLayout({ children }) {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
-                        </Typography> */}
+                            SAAS
+                        </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex' } }}>
 
                         </Box>
 
                         {isLogin ? <> <Box sx={{ flexGrow: 0, px: 1 }}>
                             <Tooltip title="Open settings" >
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                                    <Avatar alt="" src="" />
+                                <IconButton onClick={handleOpenUserMenu} >
+                                    <Avatar />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -201,7 +166,7 @@ function UserLayout({ children }) {
                             </IconButton>
                         </>
                             : <><Button
-                                onClick={() => navigate('/signup')}
+                                href='/signup'
                                 variant="h6"
                                 noWrap
                                 component="a"
@@ -218,7 +183,7 @@ function UserLayout({ children }) {
                             >
                                 SignUp
                             </Button><Button
-                                onClick={() => navigate('/login')}
+                                href='/login'
                                 variant="h6"
                                 noWrap
                                 component="a"

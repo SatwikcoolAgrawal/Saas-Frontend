@@ -1,0 +1,67 @@
+import React from 'react'
+import {Box} from '@mui/material';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+
+
+
+function CartCard({item}) {
+  return (
+    <Card>
+        <CardHeader
+        sx={{
+            color:(theme)=> theme.palette.secondary['main'],
+            backgroundColor: (theme) =>
+            theme.palette.primary['main'],
+        
+      }}
+    />
+    <CardContent>
+        
+        <Box sx={{
+            display:"flex",
+            justifyContent:"space-between",
+            alignItems:"center"
+        }}>
+        <Box > 
+        <Typography component="h4" variant="h5" color="text.primary" >
+          {item.servicename}
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          {item.plan}
+        </Typography>
+        </Box>
+      
+       
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'baseline',
+        
+        }}> 
+        <Typography component="h4" variant="h5" color="text.primary" >
+          ${item.price}
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          /mo
+        </Typography>
+        </Box>
+        
+        </Box>
+     
+     
+    </CardContent>
+    <CardActions>
+      <Button fullWidth variant="contained" >
+        Remove Item
+      </Button>
+    </CardActions>
+  </Card>
+  )
+}
+
+export default CartCard
