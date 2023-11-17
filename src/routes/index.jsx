@@ -3,7 +3,7 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import UserLayout from '../layouts/UserLayout';
 import Home from '../pages/Home';
-import Product from '../pages/Product';
+import Plans from '../pages/Plans';
 import Cart from '../pages/Cart';
 
 import SignUp from '../pages/Signup';
@@ -23,7 +23,7 @@ export default function Router() {
             children: [
                 { element: <Navigate to="/home" />, index: true },
                 { path: "/home", element: <Home /> },
-                { path: '/plans/:service', element: <Product /> },
+                { path: '/plans/:service', element: <Plans /> },
 
                 { path: "/cart", element: <Cart /> },
             ]
