@@ -1,38 +1,20 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
+
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from "axios";
-import { redirect, useNavigate } from 'react-router-dom';
+import {Container,Card} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 // TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
 
 export default function SignUp() {
 
@@ -40,20 +22,11 @@ export default function SignUp() {
     const navigate = useNavigate();
 
     const addUser = (data) => {
-
-
-
         api.post('/register', data).then(res => {
-
-
 
             // if(res.status==400){
 
             // console.log('User already exists');
-
-
-
-
             // }
             if (res.status === 500) {
 
@@ -63,30 +36,18 @@ export default function SignUp() {
 
 
             }
-
-
             sessionStorage.setItem("access-token", res.data.jwtToken);
-
-
             console.log('Sign up Successful');
-
             navigate("/");
 
-
-
         }).catch(err => {
-
 
             navigate("/signup");
 
             console.log(err);
-
         })
 
-
-
     }
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -99,22 +60,23 @@ export default function SignUp() {
     };
 
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+        <Container component="main" maxWidth="md" sx={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}>
+
+        <Card
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            borderRadius:2,
+            p:2,
+           
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor:(theme)=>theme.palette.primary['main'] }}>
+            <LockOutlinedIcon />
+          </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        Signup From Here
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
@@ -169,9 +131,8 @@ export default function SignUp() {
                             </Grid>
                         </Grid>
                     </Box>
-                </Box>
-                <Copyright sx={{ mt: 5 }} />
-            </Container>
-        </ThemeProvider>
+                </Card>
+             
+            </Container>   
     );
 }

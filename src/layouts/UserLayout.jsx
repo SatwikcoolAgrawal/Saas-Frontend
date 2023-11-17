@@ -205,7 +205,7 @@ function UserLayout({ children }) {
                                 variant="h6"
                                 noWrap
                                 component="a"
-                                href="#app-bar-with-responsive-menu"
+                              
                                 sx={{
                                     mr: 0,
                                     display: { xs: 'flex' },
@@ -222,7 +222,6 @@ function UserLayout({ children }) {
                                 variant="h6"
                                 noWrap
                                 component="a"
-                                href="#app-bar-with-responsive-menu"
                                 sx={{
                                     mr: 0,
                                     display: { xs: 'flex' },
