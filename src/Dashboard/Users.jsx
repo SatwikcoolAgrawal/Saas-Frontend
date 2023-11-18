@@ -161,7 +161,7 @@ const userRows = [
 function Users() {
 
     return (
-        <Datatable tableField={userColumns} tableData={userRows} title={"User"} />
+        <Datatable tableField={userColumns} tableData={userRows} title={"User"} Rpage={"/dashboard/userdetail"}/>
     )
 }
 

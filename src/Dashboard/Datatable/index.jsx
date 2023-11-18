@@ -1,15 +1,20 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Card ,CardContent,Button} from "@mui/material";
 
-const Datatable = ({tableField,tableData,title}) => {
-  const [data, setData] = useState(tableData);
 
+const Datatable = ({tableField,tableData,title,Rpage}) => {
+  const [data, setData] = useState(tableData);
+  const navigate=useNavigate();
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
+
+  const handleClick=(e,user)=>{
+    navigate(Rpage,{state:user});
+  }
 
   const actionColumn = [
     {
@@ -19,12 +24,9 @@ const Datatable = ({tableField,tableData,title}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <Button variant="outlined" >Edit</Button>
-            </Link>
-            <Button variant="contained"
-              
-              onClick={() => handleDelete(params.row.id)}
+            
+              <Button variant="outlined" onClick={(e)=>handleClick(e,params.row)}>Edit</Button>
+              <Button variant="contained" onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </Button>
@@ -39,7 +41,7 @@ const Datatable = ({tableField,tableData,title}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/users/new" className="link">
+        <Link to="/newuser" className="link">
           Add New
         </Link>
       </div>
