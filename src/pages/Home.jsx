@@ -45,8 +45,8 @@ export default function Home() {
         <Container sx={{ py: 8 }} maxWidth="lg">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {services!==0 && services.map((service) => (
-              <Grid item xs={12} sm={6} md={4}>
+            {services!==0 && services.map((service,idx) => (
+              <Grid key={idx} item xs={12} sm={6} md={4}>
                 <HomeCard service={service}/>
               </Grid>
             ))}

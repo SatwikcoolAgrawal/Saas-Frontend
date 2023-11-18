@@ -83,7 +83,6 @@ function UserLayout({ children }) {
                         <img src={logo} alt="" height={50} width={50}/>
                         <Typography
                             variant="h6"
-                            noWrap
                             component="a"
                             href="/home"
                             sx={{
@@ -103,7 +102,7 @@ function UserLayout({ children }) {
                         <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
-                            noWrap
+                           
                             component="a"
                             href="/home"
                             sx={{
@@ -174,7 +173,7 @@ function UserLayout({ children }) {
                             : <><Button
                                 href='/signup'
                                 variant="h6"
-                                noWrap
+                               
                                 component="a"
 
                                 sx={{
