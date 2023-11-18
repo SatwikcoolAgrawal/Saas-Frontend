@@ -7,7 +7,7 @@ import CartCard from '../components/CartCard';
 import TotalCard from '../components/TotalCard';
 
 const Cart = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(0);
   const [total, setTotal] = useState(0);
   const [prices, setPrices] = useState([]);
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Cart = () => {
     <Container Gutters component="main" sx={{ pt: 8, pb: 6 }}>
       <Grid container spacing={6} >
         <Grid item xs={12} sm={6} >
-          {
+          {items && 
             items.map((item, idx) => (
               <Grid item key={idx} xs={12} sx={{ pb: 4 }}>
                 <CartCard item={item} handleDelete={fetchApi} />

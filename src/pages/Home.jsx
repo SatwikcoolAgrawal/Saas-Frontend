@@ -7,7 +7,7 @@ import HomeCard from '../components/HomeCard';
 import api from '../api/axios';
 
 export default function Home() {
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState(0);
   useEffect(() => {
     api.get('/api/services').then(res=>{
       setServices(res.data);
@@ -45,7 +45,7 @@ export default function Home() {
         <Container sx={{ py: 8 }} maxWidth="lg">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {services.map((service) => (
+            {services && services.map((service) => (
               <Grid item xs={12} sm={6} md={4}>
                 <HomeCard service={service}/>
               </Grid>

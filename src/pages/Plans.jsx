@@ -9,7 +9,7 @@ import api from '../api/axios';
 const Plans = () => {
   const {service} = useParams();
   const [islogin,setLogin]=useState(false);
-  const [plans,setPlans]=useState([]);
+  const [plans,setPlans]=useState(0);
 
   useEffect(()=>{
     const token=sessionStorage.getItem('access-token')
