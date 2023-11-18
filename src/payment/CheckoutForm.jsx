@@ -23,7 +23,7 @@ const CheckoutForm = () => {
             //`Elements` instance that was used to create the Payment Element
             elements,
             confirmParams: {
-                return_url: "http://localhost:3001/success",
+                return_url: process.env.REACT_APP_BASE_URL+"/success",
             },
         });
         console.log(result);
