@@ -14,7 +14,7 @@ import PreCheckout from '../payment/PreChekout';
 import Success from '../payment/Success';
 import Users from '../Dashboard/Users';
 import Services from '../Dashboard/Services';
-
+import Details from "../Dashboard/Forms/UserForm"
 export default function Router() {
     const routes = useRoutes([
         {
@@ -47,10 +47,9 @@ export default function Router() {
             children: [
 
                 { element: <Navigate to="/dashboard/users" />, index: true },
-                { path: '/dashboard/users', element: <Users /> },
-                { path: '/dashboard/services', element: <Services /> },
-
-
+                { path: 'users', element: <Users /> },
+                { path: 'services', element: <Services /> },
+                {path:'userdetail',element:<Details/>}
 
             ]
 

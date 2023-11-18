@@ -86,7 +86,7 @@ const userColumns = [
 function Services() {
 
     return (
-        <Datatable tableField={userColumns} tableData={servicesAll} title={"Service"} />
+        <Datatable tableField={userColumns} tableData={servicesAll} title={"Service"}  Rpage={"/dashboard/servicedetail"}/>
     )
 }
 
