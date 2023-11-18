@@ -1,6 +1,6 @@
-import React, { Fragment, Suspense, lazy } from "react";
+import React from "react";
 import { ThemeProvider, StyledEngineProvider, CssBaseline } from "@mui/material";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 // import Plans from './pages/Plans'
 // import Product from './pages/Product'
 // import Cart from './pages/Cart'

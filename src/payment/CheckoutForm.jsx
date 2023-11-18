@@ -1,12 +1,12 @@
 import { Container,Button,Card,CardContent } from '@mui/material';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { useNavigate } from 'react-router-dom';
-import api from '../api/axios';
+
+
 
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
-    const navigate = useNavigate();
+   
 
     const handleSubmit = async (event) => {
         // We don't want to let default form submission happen here,

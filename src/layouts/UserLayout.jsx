@@ -5,7 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -18,8 +17,8 @@ import { decodeToken } from "react-jwt";
 import { useNavigate } from 'react-router';
 import LocalMallSharpIcon from '@mui/icons-material/LocalMallSharp';
 import { Link } from '@mui/material';
+import logo from "../images/logo.png"
 
-const settings = ['Dashboard', 'Logout'];
 
 function UserLayout({ children }) {
 
@@ -81,7 +80,7 @@ function UserLayout({ children }) {
             <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar >
-                        <AdbIcon sx={{ display: { xs: 'none', md: "flex" }, mr: 1 }} />
+                        <img src={logo} alt="" height={50} width={50}/>
                         <Typography
                             variant="h6"
                             noWrap
