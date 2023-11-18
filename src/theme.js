@@ -9,7 +9,7 @@ const background = "#f5f5f5";
 const warningLight = "rgba(253, 200, 69, .3)";
 const warningMain = "rgba(253, 200, 69, .5)";
 const warningDark = "rgba(253, 200, 69, .7)";
-
+const grey= '#C4CDD5';
 // border
 const borderWidth = 2;
 const borderColor = "rgba(0, 0, 0, 0.13)";
@@ -29,6 +29,7 @@ const theme = createTheme(adaptV4Theme({
     primary: { main: primary },
     secondary: { main: secondary },
     common: {
+      grey,
       black,
       darkBlack
     },

@@ -1,4 +1,4 @@
-import { Container,Button } from '@mui/material';
+import { Container,Button,Card,CardContent } from '@mui/material';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
@@ -36,12 +36,16 @@ const CheckoutForm = () => {
 
 
     return (
-        <Container component="main" maxWidth="md" sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+        <Container component="main" maxWidth="md"  sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh"}}>
+        <Card sx={{width:"100%",py:5}}>
+        <CardContent>
         <form>
             
             <PaymentElement />
             <Button disabled={!stripe} variant='contained' fullWidth onClick={handleSubmit}>Submit</Button>
         </form>
+        </CardContent>
+        </Card>
         </Container>
     )
 };

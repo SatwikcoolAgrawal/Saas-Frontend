@@ -26,6 +26,8 @@ function UserLayout({ children }) {
 
     const [isadmin, setIsadmin] = useState(false);
     const [isLogin, setIslogin] = useState(false);
+    const [name, setName] = useState("");
+
     const navigate = useNavigate();
 
 
@@ -39,13 +41,14 @@ function UserLayout({ children }) {
         if (token) {
             setIslogin(true);
             const data = decodeToken(token);
+            
             //token decode
             console.log(data);
 
-            const { isAdmin, isSuperAdmin } = data;
+            const { isAdmin, isSuperAdmin,name } = data;
 
             // check for isadmin or issuperAdmin
-
+            setName(name);
             setIsadmin(isAdmin || isSuperAdmin);
 
         }
@@ -123,10 +126,10 @@ function UserLayout({ children }) {
                         </MenuItem>
                         </Box>
 
-                        {isLogin ? <> <Box sx={{ flexGrow: 0, px: 1 }}>
+                        {isLogin ? <> <Box sx={{ flexGrow: 0.02, px: 1 }}>
                             <Tooltip title="Open settings" >
                                 <IconButton onClick={handleOpenUserMenu} >
-                                    <Avatar />
+                                    <Avatar sx={{backgroundColor:(theme)=>theme.palette.common['grey']}}/>
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -145,7 +148,8 @@ function UserLayout({ children }) {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-
+                            
+                                
                                 {isadmin && <MenuItem >
                                     <Typography textAlign="center">Dashboard</Typography>
                                 </MenuItem>}
@@ -164,8 +168,8 @@ function UserLayout({ children }) {
                             </Menu>
 
                         </Box>
-                            <IconButton color='inherit' onClick={() => navigate('/cart')} >
-                                <LocalMallSharpIcon sx={{ fontSize: 40 }} />
+                            <IconButton color='inherit' sx={{backgroundColor:(theme)=>theme.palette.common['grey']}} onClick={() => navigate('/cart')} >
+                                <LocalMallSharpIcon sx={{ fontSize: 25 }} />
                             </IconButton>
                         </>
                             : <><Button
