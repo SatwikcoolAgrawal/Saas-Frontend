@@ -23,7 +23,8 @@ import logo from "../images/logo.png"
 function UserLayout({ children }) {
 
 
-    const [isadmin, setIsadmin] = useState(false);
+    const [isadmin, setIsadmin] = useState(true);
+    const [isSuperadmin, setIsSuperAdmin] = useState(true);
     const [isLogin, setIslogin] = useState(false);
     const [name, setName] = useState("");
 
@@ -39,16 +40,19 @@ function UserLayout({ children }) {
 
         if (token) {
             setIslogin(true);
+
             const data = decodeToken(token);
-            
+
             //token decode
             console.log(data);
 
-            const { isAdmin, isSuperAdmin,name } = data;
+
+            if (data.isAdmin) setIsadmin(true);
+            if (data.isSuperAdmin) setIsSuperAdmin(true);
 
             // check for isadmin or issuperAdmin
             setName(name);
-            setIsadmin(isAdmin || isSuperAdmin);
+
 
         }
 
@@ -80,7 +84,7 @@ function UserLayout({ children }) {
             <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar >
-                        <img src={logo} alt="" height={50} width={50}/>
+                        <img src={logo} alt="" height={50} width={50} />
                         <Typography
                             variant="h6"
                             component="a"
@@ -102,7 +106,7 @@ function UserLayout({ children }) {
                         <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
-                           
+
                             component="a"
                             href="/home"
                             sx={{
@@ -118,16 +122,16 @@ function UserLayout({ children }) {
                         >
                             SAAS
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex'},px:3 }}>
-                        <MenuItem   sx={{px:4}}>
-                            <Link href="/home" textAlign="center" sx={{color:(theme)=>theme.palette.secondary['main']}}>Home</Link>
-                        </MenuItem>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex' }, px: 3 }}>
+                            <MenuItem sx={{ px: 4 }}>
+                                <Link href="/home" textAlign="center" sx={{ color: (theme) => theme.palette.secondary['main'] }}>Home</Link>
+                            </MenuItem>
                         </Box>
 
                         {isLogin ? <> <Box sx={{ flexGrow: 0.02, px: 1 }}>
                             <Tooltip title="Open settings" >
                                 <IconButton onClick={handleOpenUserMenu} >
-                                    <Avatar sx={{backgroundColor:(theme)=>theme.palette.common['grey']}}/>
+                                    <Avatar sx={{ backgroundColor: (theme) => theme.palette.common['grey'] }} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -146,11 +150,24 @@ function UserLayout({ children }) {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                            
-                                
-                                {isadmin && <MenuItem >
-                                    <Typography textAlign="center">Dashboard</Typography>
-                                </MenuItem>}
+
+
+
+                                {isadmin && <>  <MenuItem ><Typography textAlign="center" onClick={() => {
+
+
+                                    navigate('/dashboard/users')
+                                }}> Dashboard Users</Typography>  </MenuItem>
+
+                                    {isSuperadmin && <MenuItem > <Typography
+                                        onClick={() => {
+
+
+                                            navigate('/dashboard/services')
+                                        }}
+                                        textAlign="center">Dashboard Service</Typography>  </MenuItem>}
+                                </>}
+
                                 <MenuItem >
                                     <Typography onClick={() => {
                                         sessionStorage.removeItem('access-token');
@@ -166,14 +183,14 @@ function UserLayout({ children }) {
                             </Menu>
 
                         </Box>
-                            <IconButton color='inherit' sx={{backgroundColor:(theme)=>theme.palette.common['grey']}} onClick={() => navigate('/cart')} >
+                            <IconButton color='inherit' sx={{ backgroundColor: (theme) => theme.palette.common['grey'] }} onClick={() => navigate('/cart')} >
                                 <LocalMallSharpIcon sx={{ fontSize: 25 }} />
                             </IconButton>
                         </>
                             : <><Button
                                 href='/signup'
                                 variant="h6"
-                               
+
                                 component="a"
 
                                 sx={{
