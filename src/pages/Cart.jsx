@@ -17,10 +17,12 @@ const Cart = () => {
       setItems(res.data.data);
       let s = 0;
       let p = [];
-      resp.forEach((ele) => {
+      if (resp?.length > 0 ) {resp.forEach((ele) => {
         if (ele.price) s += Number(ele.price);
         p.push(ele.priceId);
+        
       });
+    }
       setPrices(p);
       setTotal(s);
     }).catch(error => {
@@ -45,7 +47,7 @@ const Cart = () => {
     <Container Gutters component="main" sx={{ pt: 8, pb: 6 }}>
       <Grid container spacing={6} >
         <Grid item xs={12} sm={6} >
-          {items && 
+          {items!==0 && 
             items.map((item, idx) => (
               <Grid item key={idx} xs={12} sx={{ pb: 4 }}>
                 <CartCard item={item} handleDelete={fetchApi} />

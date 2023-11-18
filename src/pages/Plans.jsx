@@ -44,7 +44,7 @@ const Plans = () => {
       {/* End hero unit */}
       <Container maxWidth="lg" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {plans && plans.map((plan,idx) => (
+          {plans!==0 && plans.map((plan,idx) => (
          
             <Grid item key={idx} xs={12} md={4}>
             <PricingCard plan={plan} islogin={islogin}/>
