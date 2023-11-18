@@ -2,6 +2,8 @@
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import UserLayout from '../layouts/UserLayout';
+import DashboardLayout from '../layouts/DashboardLayout';
+
 import Home from '../pages/Home';
 import Plans from '../pages/Plans';
 import Cart from '../pages/Cart';
@@ -10,10 +12,8 @@ import SignUp from '../pages/Signup';
 import Login from '../pages/Login';
 import PreCheckout from '../payment/PreChekout';
 import Success from '../payment/Success';
-import Sidebar from '../Dashboard/Sidebar';
 import Users from '../Dashboard/Users';
 import Services from '../Dashboard/Services';
-
 
 export default function Router() {
     const routes = useRoutes([
@@ -40,9 +40,9 @@ export default function Router() {
         {
             path: "/dashboard", element:
                 (
-                    <Sidebar>
+                    <DashboardLayout>
                         <Outlet />
-                    </Sidebar>
+                    </DashboardLayout>
                 ),
             children: [
 

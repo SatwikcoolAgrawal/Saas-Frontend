@@ -13,19 +13,15 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { Grid } from "@mui/material";
 
 const Sidebar = () => {
     return (
-        <div className="sidebar">
-            <div className="top">
-                <Link to="/" style={{ textDecoration: "none" }}>
-                    <span className="logo">Dashboard</span>
-                </Link>
-            </div>
-            <hr />
+
+    <Grid item xs={2}  position="sticky">
+        <div className="sidebar" >
             <div className="center">
-                <ul>
-                    <p className="title">LISTS</p>
+                <ul >
                     <Link to="/users" style={{ textDecoration: "none" }}>
                         <li>
                             <PersonOutlineIcon className="icon" />
@@ -42,6 +38,7 @@ const Sidebar = () => {
             </div>
 
         </div>
+    </Grid>
     );
 };
 
