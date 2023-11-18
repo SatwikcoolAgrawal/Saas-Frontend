@@ -10,6 +10,9 @@ import SignUp from '../pages/Signup';
 import Login from '../pages/Login';
 import PreCheckout from '../payment/PreChekout';
 import Success from '../payment/Success';
+import Sidebar from '../Dashboard/Sidebar';
+import Users from '../Dashboard/Users';
+import Services from '../Dashboard/Services';
 
 
 export default function Router() {
@@ -33,7 +36,25 @@ export default function Router() {
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <SignUp /> },
         { path: "/checkout", element: <PreCheckout /> },
-        { path: "/success", element: <Success/> },
+        { path: "/success", element: <Success /> },
+        {
+            path: "/dashboard", element:
+                (
+                    <Sidebar>
+                        <Outlet />
+                    </Sidebar>
+                ),
+            children: [
+
+                { element: <Navigate to="/dashboard/users" />, index: true },
+                { path: '/dashboard/users', element: <Users /> },
+                { path: '/dashboard/services', element: <Services /> },
+
+
+
+            ]
+
+        },
         // {path:"/checkout",element:<Checkout/>},
         // {
         //   element: (
