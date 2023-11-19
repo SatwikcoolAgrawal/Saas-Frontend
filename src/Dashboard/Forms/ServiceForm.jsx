@@ -92,7 +92,7 @@ export default function Details() {
           required
           fullWidth
           InputProps={{
-            readOnly: read,
+            readOnly: true,
           }}
           id="outlined-price-input"
           label="Price"
