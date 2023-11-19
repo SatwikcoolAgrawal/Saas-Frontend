@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import api from '../api/axios';
 
 const userColumns = [
-    { field: "id", headerName: "userId", width: 200 },
+    { field: "id", headerName: "userId", width: 250 },
     {
         field: "name",
         headerName: "Name",
@@ -19,12 +19,12 @@ const userColumns = [
     {
         field: "isAdmin",
         headerName: "isAdmin",
-        width: 100,
+        width: 150,
     },
     {
         field: "isSuperAdmin",
         headerName: "isSuperAdmin",
-        width: 120,
+        width: 200,
     },
 
 ];
@@ -208,7 +208,7 @@ function Users() {
 
     return (
 
-        <Datatable tableField={userColumns} tableData={userRows} fetchData={fetchUsers} Rpage={"/dashboard/userdetail"} title={"User"} />
+        <Datatable tableField={userColumns} tableData={users} fetchData={fetchUsers} Rpage={"/dashboard/userdetail"} title={"User"} />
 
     )
 }

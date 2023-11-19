@@ -5,16 +5,16 @@ import { Navigate, useNavigate } from 'react-router';
 import api from '../api/axios';
 
 const userColumns = [
-    { field: "id", headerName: "ServiceId", width: 270 },
+    { field: "id", headerName: "ServiceId", width: 250 },
     {
         field: "servicename",
         headerName: "Service Name",
-        width: 250
+        width: 170
     },
     {
         field: "plan",
         headerName: "Plan",
-        width: 200,
+        width: 150,
         renderCell: (params) => {
             return (
                 <Paper sx={{ background: (theme) => theme.palette.common['grey'], color: (theme) => theme.palette.primary['main'], p: 1 }} elevation={1}>{params.row.plan}</Paper>
@@ -22,9 +22,14 @@ const userColumns = [
         }
     },
     {
+        field:'description',
+        headerName:'Description',
+        width:220,
+    },
+    {
         field: "price",
         headerName: "Price",
-        width: 200,
+        width: 130,
     },
 ];
 
@@ -139,7 +144,7 @@ function Services() {
 
     return (
 
-        <>{services && <Datatable tableField={userColumns} tableData={servicesAll} fetchData={fetchServices} Rpage={"/dashboard/servicedetail"} title={"Service"} />}
+        <>{services && <Datatable tableField={userColumns} tableData={services} fetchData={fetchServices} Rpage={"/dashboard/servicedetail"} title={"Service"} />}
         </>
     )
 }
