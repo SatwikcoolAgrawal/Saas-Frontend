@@ -93,7 +93,7 @@ const Datatable = ({ tableField, tableData, fetchData, title, Rpage }) => {
         <div className="datatable">
           <div className="datatableTitle">
             Add New {title}
-            <Link to="/users/new" className="link">
+            <Link to={window.location.pathname+"/new"} className="link">
               Add New
             </Link>
           </div>

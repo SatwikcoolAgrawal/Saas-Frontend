@@ -14,7 +14,11 @@ import PreCheckout from '../payment/PreChekout';
 import Success from '../payment/Success';
 import Users from '../Dashboard/Users';
 import Services from '../Dashboard/Services';
-import Details from "../Dashboard/Forms/UserForm"
+import UserDetails from "../Dashboard/Forms/UserForm"
+import ServiceDetails from "../Dashboard/Forms/ServiceForm"
+import NewUserForm from "../Dashboard/Forms/NewUserForm"
+import NewServiceForm from "../Dashboard/Forms/NewServiceForm"
+
 export default function Router() {
     const routes = useRoutes([
         {
@@ -38,7 +42,7 @@ export default function Router() {
         { path: "/checkout", element: <PreCheckout /> },
         { path: "/success", element: <Success /> },
         {
-            path: "/dashboard", element:
+            path: "dashboard", element:
                 (
                     <DashboardLayout>
                         <Outlet />
@@ -47,10 +51,18 @@ export default function Router() {
             children: [
 
                 { element: <Navigate to="/dashboard/users" />, index: true },
-                { path: 'users', element: <Users /> },
-                { path: 'services', element: <Services /> },
-                {path:'userdetail',element:<Details/>}
-
+                { path: 'users',
+                children:[
+                    {element:<Users />,index:true},
+                    {path:'new',element:<NewUserForm />}
+                ]
+                },
+                { path: 'services', children:[ 
+                    {element: <Services />,index:true},
+                    {path:'new',element:<NewServiceForm/>}
+                ] },
+                {path:'userdetail',element:<UserDetails/>},
+                {path:'servicedetail',element:<ServiceDetails/>}
             ]
 
         },

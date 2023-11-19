@@ -23,8 +23,8 @@ import logo from "../images/logo.png"
 function UserLayout({ children }) {
 
 
-    const [isadmin, setIsadmin] = useState(true);
-    const [isSuperadmin, setIsSuperAdmin] = useState(true);
+    const [isadmin, setIsadmin] = useState(false);
+    const [isSuperadmin, setIsSuperAdmin] = useState(false);
     const [isLogin, setIslogin] = useState(false);
     const [name, setName] = useState("");
 
