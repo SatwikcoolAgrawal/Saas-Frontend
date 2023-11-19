@@ -1,35 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Datatable from './Datatable'
+import { useNavigate } from 'react-router';
+import api from '../api/axios';
 
 const userColumns = [
-    { field: "id", headerName: "userId",width:200},
+    { field: "id", headerName: "userId", width: 200 },
     {
-      field: "name",
-      headerName: "Name",
-      width:170  
+        field: "name",
+        headerName: "Name",
+        width: 170
     },
     {
-      field: "email",
-      headerName: "Email",
-      width: 170,
+        field: "email",
+        headerName: "Email",
+        width: 170,
+    },
+
+    {
+        field: "isAdmin",
+        headerName: "isAdmin",
+        width: 100,
     },
     {
-      field: "email",
-      headerName: "Email",
-      width: 170,
+        field: "isSuperAdmin",
+        headerName: "isSuperAdmin",
+        width: 120,
     },
-    {
-      field: "isAdmin",
-      headerName: "isAdmin",
-      width: 100,
-    },
-    {
-      field: "isSuperAdmin",
-      headerName: "isSuperAdmin",
-      width: 120,
-    },
-   
-  ];
+
+];
 
 const userRows = [
     {
@@ -153,15 +151,65 @@ const userRows = [
         "updatedAt": "2023-11-16T14:21:11.062Z",
         "__v": 0
     }
-  ]
-  
-  
-  
-  
+]
+
+
+
+
 function Users() {
+    const navigate = useNavigate();
+    const [users, setUsers] = useState([]);
+
+
+    const fetchUsers = () => {
+
+        api.get('/api/userAll').then(res => {
+
+
+            if (res.status === 500) {
+
+                console.log(res.error.message);
+
+            }
+            else {
+                const data = res.data.map(s => {
+
+                    return { ...s, id: s._id };
+
+                });
+                console.log('user api called');
+                setUsers(data);
+            }
+
+        }).catch(err => console.log(err.message));
+    }
+
+    useEffect(() => {
+
+        const token = sessionStorage.getItem('access-token');
+
+        // if (!token.isAdmin && !token.isSuperAdmin) {
+
+
+        //     navigate('/home');
+
+
+        // }
+
+
+        fetchUsers();
+
+
+
+
+
+
+    }, [])
 
     return (
-        <Datatable tableField={userColumns} tableData={userRows} title={"User"} Rpage={"/dashboard/userdetail"}/>
+
+        <Datatable tableField={userColumns} tableData={userRows} fetchData={fetchUsers} Rpage={"/dashboard/userdetail"} title={"User"} />
+
     )
 }
 

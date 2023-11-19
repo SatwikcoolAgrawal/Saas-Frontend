@@ -1,31 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Datatable from './Datatable'
 import { Paper } from '@mui/material';
+import { Navigate, useNavigate } from 'react-router';
+import api from '../api/axios';
 
 const userColumns = [
-    { field: "id", headerName: "ServiceId",width:270},
+    { field: "id", headerName: "ServiceId", width: 270 },
     {
-      field: "servicename",
-      headerName: "Service Name",
-      width:250  
+        field: "servicename",
+        headerName: "Service Name",
+        width: 250
     },
     {
-      field: "plan",
-      headerName: "Plan",
-      width: 200,
-      renderCell: (params) => {
-        return (
-         <Paper sx={{background:(theme)=>theme.palette.common['grey'],color:(theme)=>theme.palette.primary['main'],p:1}} elevation={1}>{params.row.plan}</Paper>
-        );
-    }},
-    {
-      field: "price",
-      headerName: "Price",
-      width: 200,
+        field: "plan",
+        headerName: "Plan",
+        width: 200,
+        renderCell: (params) => {
+            return (
+                <Paper sx={{ background: (theme) => theme.palette.common['grey'], color: (theme) => theme.palette.primary['main'], p: 1 }} elevation={1}>{params.row.plan}</Paper>
+            );
+        }
     },
-  ];
+    {
+        field: "price",
+        headerName: "Price",
+        width: 200,
+    },
+];
 
-  const servicesAll = [
+const servicesAll = [
     {
         "id": "6554ba9fb6652e61bdc01ce8",
         "productId": "prod_P0fHy7OZwYPVKZ",
@@ -80,13 +83,64 @@ const userColumns = [
         "__v": 0
     }
 ]
-  
-  
-  
+
+
+
 function Services() {
 
+    const navigate = useNavigate();
+    const [services, setServices] = useState([]);
+
+
+    const fetchServices = () => {
+
+        api.get('/api/servicesAll').then(res => {
+
+
+            if (res.status === 500) {
+
+                console.log(res.error.message);
+
+            }
+            else {
+                const data = res.data.map(s => {
+
+                    return { ...s, id: s._id };
+
+                });
+                console.log('services api called');
+
+                setServices(data);
+            }
+
+        }).catch(err => console.log(err.message));
+
+    }
+
+    useEffect(() => {
+
+        const token = sessionStorage.getItem('access-token');
+
+        // if (!token.isAdmin && !token.isSuperAdmin) {
+
+
+        //     navigate('/home');
+
+
+        // }
+
+
+        fetchServices();
+
+
+
+
+    }, [])
+
     return (
-        <Datatable tableField={userColumns} tableData={servicesAll} title={"Service"}  Rpage={"/dashboard/servicedetail"}/>
+
+        <>{services && <Datatable tableField={userColumns} tableData={servicesAll} fetchData={fetchServices} Rpage={"/dashboard/servicedetail"} title={"Service"} />}
+        </>
     )
 }
 
