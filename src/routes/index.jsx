@@ -14,7 +14,7 @@ import PreCheckout from '../payment/PreChekout';
 import Success from '../payment/Success';
 import Users from '../Dashboard/Users';
 import Services from '../Dashboard/Services';
-import UserDetails from "../Dashboard/Forms/UserForm"
+import UserDetails from "../Dashboard/Forms/UserForm";
 import ServiceDetails from "../Dashboard/Forms/ServiceForm"
 import NewUserForm from "../Dashboard/Forms/NewUserForm"
 import NewServiceForm from "../Dashboard/Forms/NewServiceForm"
